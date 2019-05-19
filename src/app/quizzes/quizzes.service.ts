@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Quiz } from '../models/quizz.model';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { firestore } from 'firebase';
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,94 +11,16 @@ import { Quiz } from '../models/quizz.model';
 export class QuizzesService {
   quizzes :Quiz[] = [];
 
-  constructor() { 
-    this.quizzes.push({
-      id: 1,
-      name: 'Rogacze',
-      questions: [{
-        question:'Ma rogi',
-        answers:[{
-          correct: false,
-          id: 1,
-          text: 'Kot'
-        },
-        {
-          correct: false,
-          id: 2,
-          text: 'Pies'
-        },
-        {
-          correct: false,
-          id: 3,
-          text: 'Mysz'
-        },
-        {
-          correct: true,
-          id: 4,
-          text: 'Baran'
-        }]
-      },
-      {
-        question:'Więcej niż jedno zwierzę to:',
-        answers:[{
-          correct: false,
-          id: 1,
-          text: 'Kot'
-        },
-        {
-          correct: false,
-          id: 2,
-          text: 'Pies'
-        },
-        {
-          correct: true,
-          id: 3,
-          text: 'Owca'
-        },
-        {
-          correct: true,
-          id: 4,
-          text: 'Lama'
-        }]
-      }
-    ]
-    });
-
-    this.quizzes.push({
-      id: 2,
-      name: 'Ogoniaste',
-      questions: [{
-        question:'Ma ogon',
-        answers:[{
-          correct: true,
-          id: 1,
-          text: 'Kot'
-        },
-        {
-          correct: true,
-          id: 2,
-          text: 'Pies'
-        },
-        {
-          correct: true,
-          id: 3,
-          text: 'Mysz'
-        },
-        {
-          correct: true,
-          id: 4,
-          text: 'Motyl'
-        }]
-      }
-    ]
-    });
+  constructor(private firestore: AngularFirestore) { 
+   
   }
 
-  getQuizzes(): Quiz[]{
-    return this.quizzes;
+  getQuizzes(): Observable<Quiz[]>{
+    const id = this.firestore.createId();
+    return this.firestore.collection('quizzes').valueChanges() as Observable<Quiz[]>;
   }
 
-  getQuiz(id: number): Quiz{
-    return this.quizzes.find(quiz => quiz.id == id);
+  getQuiz(id: string): Observable<Quiz>{
+    return this.firestore.collection('quizzes').doc(id).valueChanges() as Observable<Quiz>;
   }
 }

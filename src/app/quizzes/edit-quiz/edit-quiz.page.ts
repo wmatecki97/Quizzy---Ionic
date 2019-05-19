@@ -13,7 +13,7 @@ export class EditQuizPage implements OnInit {
   quiz: Quiz;
 
   constructor(private quizzesService: QuizzesService, private activatedRoute: ActivatedRoute) { 
-    this.quiz = quizzesService.getQuiz(this.activatedRoute.snapshot.params['quizId']);
+    // this.quiz = quizzesService.getQuiz(this.activatedRoute.snapshot.params['quizId']);
   }
 
   ngOnInit() {

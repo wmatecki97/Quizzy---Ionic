@@ -26,8 +26,9 @@ export class QuizPage implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.quiz = this.quizzesService.getQuiz(this.activatedRoute.snapshot.params['quizId']);
+    this.quizzesService.getQuiz(this.activatedRoute.snapshot.params['quizId']).subscribe(q => this.quiz = q);
     this.questionId = 0;
+    this.correctAnswers = 0;
   }
 
 

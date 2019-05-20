@@ -16,11 +16,16 @@ export class QuizzesService {
   }
 
   getQuizzes(): Observable<Quiz[]>{
-    const id = this.firestore.createId();
     return this.firestore.collection('quizzes').valueChanges() as Observable<Quiz[]>;
   }
 
   getQuiz(id: string): Observable<Quiz>{
     return this.firestore.collection('quizzes').doc(id).valueChanges() as Observable<Quiz>;
+  }
+
+  saveQuiz(quiz: Quiz){
+    if(!quiz.id)
+      quiz.id = this.firestore.createId();
+    return this.firestore.doc('quizzes/'+quiz.id).set(quiz);
   }
 }

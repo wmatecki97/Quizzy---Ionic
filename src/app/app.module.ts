@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { QuestionComponent } from './quizzes/edit-quiz/question/question.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from './../environments/environment';
@@ -21,6 +23,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    FormsModule
     ],
   providers: [
     StatusBar,

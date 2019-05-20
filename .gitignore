@@ -32,3 +32,6 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+dist/**
+Quizzy\dist
+dist/15.dc4548a8bea86fb80f55.js

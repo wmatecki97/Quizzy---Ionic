@@ -1,9 +1,52 @@
-<ion-header>
+<ion-header *ngIf="quiz">
   <ion-toolbar>
-    <ion-title>edit-quiz</ion-title>
+    <ion-title>Quiz: {{quiz.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="quiz">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-item>
+          <ion-label position="floating">Quiz Name</ion-label>
+          <ion-input [(ngModel)]="quiz.name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <question [question]="quiz.questions[selectedQuestion]"></question>
+
+    <ion-row>
+      <ion-col size-md="6" offset-md="3" text-right>
+        <ion-button (click)="addQuestion()">Add Question</ion-button>
+      </ion-col>
+    </ion-row> 
+
+    <ion-row>
+        <ion-col size-md="6" offset-md="3" text-right>
+            <ion-list-header>
+                <h1>
+                    <ion-label>Questions</ion-label>
+                </h1>
+              </ion-list-header>
+          <ion-list>
+            <ion-item *ngFor="let question of quiz.questions" (click)="selectedQuestion=quiz.questions.indexOf(question)">
+              {{question.question}}
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row> 
+
+      <ion-row>
+          <ion-col size-md="6" offset-md="3" text-right>
+            <ion-button (click)="saveQuiz()">Save Quiz</ion-button>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+
+
+
 
 </ion-content>

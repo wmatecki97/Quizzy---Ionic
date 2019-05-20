@@ -29,6 +29,12 @@ MIT
 @angular/core
 MIT
 
+@angular/fire
+MIT
+
+@angular/fire/firestore
+MIT
+
 @angular/forms
 MIT
 
@@ -37,6 +43,21 @@ MIT
 
 @angular/router
 MIT
+
+@firebase/app
+Apache-2.0
+
+@firebase/firestore
+Apache-2.0
+
+@firebase/logger
+Apache-2.0
+
+@firebase/util
+Apache-2.0
+
+@firebase/webchannel-wrapper
+Apache-2.0
 
 @ionic-native/core
 MIT
@@ -77,6 +98,9 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+angularfire2/firestore
+MIT
+
 core-js
 MIT
 Copyright (c) 2014-2019 Denis Pushkarev
@@ -99,6 +123,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+
+firebase/app
+
+firebase/firestore
 
 loader
 

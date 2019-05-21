@@ -1,3 +1,20 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <ion-split-pane when="md" content-id="content1">
+        <ion-menu side="start" contentId="content1"style="max-width:250px">
+            <ion-header>
+              <ion-toolbar color="primary">
+                <ion-title>Menu</ion-title>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content>
+              <ion-list>
+                <ion-item [routerLink]="['/quizzes']">Quizzes</ion-item>
+                <ion-item [routerLink]="['/quizzes/edit']">New Quiz</ion-item>
+              </ion-list>
+            </ion-content>
+          </ion-menu>
+  
+  <ion-router-outlet id="content1"></ion-router-outlet>
+</ion-split-pane>
+
 </ion-app>

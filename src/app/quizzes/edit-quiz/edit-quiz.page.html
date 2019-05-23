@@ -1,6 +1,9 @@
 <ion-header *ngIf="quiz">
   <ion-toolbar>
     <ion-title>Quiz: {{quiz.name}}</ion-title>
+    <ion-buttons slot="end" >
+        <ion-menu-button when="md" autoHide="true"></ion-menu-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -32,7 +35,6 @@
               </ion-list-header>
           <ion-list>
             <ion-item *ngFor="let question of quiz.questions" (click)="selectedQuestion=quiz.questions.indexOf(question)">
-              {{question.question}}
             </ion-item>
           </ion-list>
         </ion-col>

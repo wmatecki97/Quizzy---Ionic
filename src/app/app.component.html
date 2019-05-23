@@ -1,15 +1,22 @@
 <ion-app>
     <ion-split-pane when="md" content-id="content1">
-        <ion-menu side="start" contentId="content1"style="max-width:250px">
-            <ion-header>
+        <ion-menu  side="start" contentId="content1">
+          <ion-header>
               <ion-toolbar color="primary">
                 <ion-title>Menu</ion-title>
               </ion-toolbar>
+
             </ion-header>
             <ion-content>
               <ion-list>
-                <ion-item [routerLink]="['/quizzes']">Quizzes</ion-item>
-                <ion-item [routerLink]="['/quizzes/edit']">New Quiz</ion-item>
+                <ion-item [routerLink]="['/quizzes']" (click)="closeMenu()">
+                  <ion-icon name="list" slot="end"></ion-icon>
+                  Quizzes
+                </ion-item>
+                <ion-item [routerLink]="['/quizzes/edit']" (click)="closeMenu()">
+                  <ion-icon name="add" slot="end"></ion-icon>
+                  New Quiz
+                </ion-item>
               </ion-list>
             </ion-content>
           </ion-menu>

@@ -18,7 +18,17 @@
                   New Quiz
                 </ion-item>
               </ion-list>
+
+              
             </ion-content>
+            <ion-footer >
+                <ion-toolbar [routerLink]="['/login']" (click)="closeMenu()">
+                  <ion-item slot="end" >
+                      <ion-icon name="person"></ion-icon>
+                      <ion-title *ngIf="user">{{user.login |titlecase }}</ion-title>
+                  </ion-item>
+                </ion-toolbar>
+              </ion-footer>
           </ion-menu>
   
   <ion-router-outlet id="content1"></ion-router-outlet>

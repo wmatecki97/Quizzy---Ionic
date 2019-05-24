@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <div *ngIf="!loggedIn">
+        <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">Login</ion-label>
+                <ion-input [(ngModel)]="user.login"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-md="6" offset-md="3">
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      
+          <ion-row>
+              <ion-col size-md="6" offset-md="3" text-right>
+                <ion-button (click)="authenticate()">Login</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col size-md="6" offset-md="3" text-right>
+                <ion-button (click)="register()">Register</ion-button>
+            </ion-col>
+          </ion-row>
+    </div>
+    <div *ngIf="loggedIn">
+        <ion-row>
+            <ion-col size-md="6" offset-md="3" text-right>
+              <ion-button (click)="logout()">Logout</ion-button>
+          </ion-col>
+        </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

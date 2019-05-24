@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Quiz } from '../models/quizz.model';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { firestore } from 'firebase';
-import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'quizzes', loadChildren: './quizzes/quizzes/quizzes.module#QuizzesPageModule' },
   { path: 'quizzes/edit', loadChildren: './quizzes/edit-quiz/edit-quiz.module#EditQuizPageModule' },
-  { path: 'quiz/:quizId', loadChildren: './quizzes/quiz/quiz.module#QuizPageModule' }
+  { path: 'quiz/:quizId', loadChildren: './quizzes/quiz/quiz.module#QuizPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
 ];
 
 @NgModule({

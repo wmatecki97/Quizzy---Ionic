@@ -35,6 +35,7 @@
               </ion-list-header>
           <ion-list>
             <ion-item *ngFor="let question of quiz.questions" (click)="selectedQuestion=quiz.questions.indexOf(question)">
+              {{question.question}}
             </ion-item>
           </ion-list>
         </ion-col>
@@ -46,9 +47,5 @@
         </ion-col>
       </ion-row>
   </ion-grid>
-
-
-
-
 
 </ion-content>

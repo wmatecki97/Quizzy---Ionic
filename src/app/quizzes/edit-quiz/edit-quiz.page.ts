@@ -32,7 +32,7 @@ export class EditQuizPage implements OnInit {
     this.quiz.questions = this.quiz.questions.filter(q => q.question != '');
     this.quizzesService.saveQuiz(this.quiz).then(
       resolve => 
-      this.router.navigateByUrl('/quizzes')
+      this.router.navigateByUrl('/quizzes');
     );
   }
 }

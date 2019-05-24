@@ -26,4 +26,9 @@ export class QuizzesService {
       quiz.id = this.firestore.createId();
     return this.firestore.doc('quizzes/'+quiz.id).set(quiz);
   }
+
+  deleteQuiz(quiz: Quiz){
+    if(quiz.id)
+      this.firestore.doc('quizzes/' + quiz.id).delete();
+  }
 }

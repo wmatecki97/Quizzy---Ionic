@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { QuizzesService } from './../quizzes.service';
 import { Component, OnInit } from '@angular/core';
 import { Quiz } from 'src/app/models/quizz.model';
@@ -14,25 +15,52 @@ export class EditQuizPage implements OnInit {
   quiz: Quiz;
   selectedQuestion: number = 0;
 
-  constructor(private quizzesService: QuizzesService, private activatedRoute: ActivatedRoute, private router: Router) { 
+  constructor(
+    private quizzesService: QuizzesService, 
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private alertController: AlertController) {
   }
 
   ngOnInit() {
-    // this.quizzesService.getQuiz(this.activatedRoute.snapshot.params['quizId']).subscribe(q => this.quiz = q);
-    this.quiz = {questions:[]} as Quiz;
-    this.addQuestion();
+    if (this.activatedRoute.snapshot.params['quizId']) {
+      this.quizzesService.getQuiz(this.activatedRoute.snapshot.params['quizId']).subscribe(q => this.quiz = q);
+    }
+    else {
+      this.quiz = { questions: [] } as Quiz;
+      this.addQuestion();
+    }
   }
 
-  addQuestion(){
-    this.quiz.questions.push({answers:[{}]} as Question);
-    this.selectedQuestion = this.quiz.questions.length-1;
+  addQuestion() {
+    this.quiz.questions.push({ answers: [{}] } as Question);
+    this.selectedQuestion = this.quiz.questions.length - 1;
   }
 
-  saveQuiz(){
+  saveQuiz() {
     this.quiz.questions = this.quiz.questions.filter(q => q.question != '');
     this.quizzesService.saveQuiz(this.quiz).then(
-      resolve => 
-      this.router.navigateByUrl('/quizzes');
+      resolve =>
+        this.router.navigateByUrl('/quizzes')
     );
+  }
+
+  deleteQuiz(){
+    this.alertController.create({
+      header: 'Warning',
+      message: 'Do you really want to delete this quiz?',
+      buttons: [
+        {
+          text: 'Cancel'
+        },
+        {
+          text: 'OK',
+          handler: ()=> {
+            this.quizzesService.deleteQuiz(this.quiz);
+            this.router.navigate(['/quizzes']);
+          }
+        }
+      ]
+    }).then(alert => alert.present());
   }
 }

@@ -13,13 +13,11 @@
                   <ion-icon name="list" slot="end"></ion-icon>
                   Quizzes
                 </ion-item>
-                <ion-item [routerLink]="['/quizzes/edit']" (click)="closeMenu()">
+                <ion-item *ngIf="user" [routerLink]="['/quizzes/edit']" (click)="closeMenu()">
                   <ion-icon name="add" slot="end"></ion-icon>
                   New Quiz
                 </ion-item>
               </ion-list>
-
-              
             </ion-content>
             <ion-footer >
                 <ion-toolbar [routerLink]="['/login']" (click)="closeMenu()">

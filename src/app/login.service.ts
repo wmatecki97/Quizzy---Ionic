@@ -15,7 +15,7 @@ export class LoginService {
   private isLoggedInSource = new BehaviorSubject<User>(undefined);
   isLoggedIn = this.isLoggedInSource.asObservable();
 
-  constructor(private firestore: AngularFirestore, private passwordhas) {
+  constructor(private firestore: AngularFirestore) {
 
   }
 

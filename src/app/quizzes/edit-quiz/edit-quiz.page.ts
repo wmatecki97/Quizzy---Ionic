@@ -1,3 +1,4 @@
+import { LoginService } from './../../login.service';
 import { AlertController } from '@ionic/angular';
 import { QuizzesService } from './../quizzes.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,8 @@ export class EditQuizPage implements OnInit {
     private quizzesService: QuizzesService, 
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private alertController: AlertController) {
+    private alertController: AlertController,
+    private loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -27,8 +29,10 @@ export class EditQuizPage implements OnInit {
       this.quizzesService.getQuiz(this.activatedRoute.snapshot.params['quizId']).subscribe(q => this.quiz = q);
     }
     else {
-      this.quiz = { questions: [] } as Quiz;
-      this.addQuestion();
+      this.loginService.isLoggedIn.subscribe(user => {
+        this.quiz = { questions: [], author: user } as Quiz;
+        this.addQuestion();
+      });
     }
   }
 

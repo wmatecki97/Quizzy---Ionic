@@ -15,11 +15,12 @@ export class LoginService {
   private isLoggedInSource = new BehaviorSubject<User>(undefined);
   isLoggedIn = this.isLoggedInSource.asObservable();
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, private passwordhas) {
 
   }
 
   login(user: User){
+
       return this.firestore.collection('users').doc(user.login).snapshotChanges().pipe(map(action => {
         if(action.payload.exists)
         {
